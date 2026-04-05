@@ -26,13 +26,13 @@ export default function Overlay() {
         {/* Section 1 */}
         <motion.div
            style={{ opacity: opacity1, y: y1 }}
-           className="absolute text-center flex flex-col items-center gap-4"
+           className="absolute text-center flex flex-col items-center gap-4 px-6"
          >
-           <div className="hero-reveal flex flex-col items-center gap-4">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white drop-shadow-xl">
+           <div className="hero-reveal flex flex-col items-center gap-2 sm:gap-4">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-white drop-shadow-xl whitespace-nowrap">
               Shivam Khade.
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 font-medium tracking-wide">
+            <p className="text-base sm:text-lg md:text-2xl text-gray-300 font-medium tracking-wide">
               Creative Developer.
             </p>
            </div>
@@ -41,9 +41,9 @@ export default function Overlay() {
         {/* Section 2 */}
         <motion.div
           style={{ opacity: opacity2, y: y2 }}
-          className="absolute left-8 md:left-24 max-w-lg"
+          className="absolute left-6 sm:left-12 md:left-24 max-w-[85vw] md:max-w-lg"
         >
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight drop-shadow-xl">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight drop-shadow-xl">
             I build <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">digital experiences.</span>
           </h2>
         </motion.div>
@@ -51,9 +51,9 @@ export default function Overlay() {
         {/* Section 3 */}
         <motion.div
           style={{ opacity: opacity3, y: y3 }}
-          className="absolute right-8 md:right-24 max-w-lg text-right"
+          className="absolute right-6 sm:right-12 md:right-24 max-w-[85vw] md:max-w-lg text-right"
         >
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight drop-shadow-xl">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight drop-shadow-xl">
             Bridging <br />
             <span className="italic font-light">design</span> and <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">engineering.</span>
           </h2>
