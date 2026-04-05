@@ -4,31 +4,36 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function Overlay() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
+  const { scrollYProgress } = useScroll();
 
-  // Section 1: 0% to 10% (Immediate start, gone early)
-  const opacity1 = useTransform(scrollYProgress, [0, 0.05, 0.1], [1, 1, 0]);
+  // Create discrete boolean triggers for each section to prevent ANY overlap
+  const showSection1 = useTransform(scrollYProgress, [0, 0.15], [true, false]);
+  const showSection2 = useTransform(scrollYProgress, [0.25, 0.55], [true, false]);
+  const showSection2Enter = useTransform(scrollYProgress, [0.20, 0.25], [false, true]);
+
+  // Section 1: Purely for the start
+  const opacity1 = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
   const y1 = useTransform(scrollYProgress, [0, 0.1], ["0%", "-20%"]);
 
-  // Section 2: 25% to 55% (Centered at 40%)
-  const opacity2 = useTransform(scrollYProgress, [0.25, 0.4, 0.55], [0, 1, 0]);
+  // Section 2: Absolute gap ensured by triggers
+  const opacity2 = useTransform(scrollYProgress, [0.25, 0.35, 0.45, 0.55], [0, 1, 1, 0]);
   const y2 = useTransform(scrollYProgress, [0.25, 0.55], ["20%", "-20%"]);
 
-  // Section 3: 70% to 95% (Final section)
-  const opacity3 = useTransform(scrollYProgress, [0.7, 0.82, 0.95], [0, 1, 0]);
+  // Section 3: Absolute gap ensured by triggers 
+  const opacity3 = useTransform(scrollYProgress, [0.7, 0.8, 0.85, 0.95], [0, 1, 1, 0]);
   const y3 = useTransform(scrollYProgress, [0.7, 0.95], ["20%", "-20%"]);
 
   return (
-    <div ref={containerRef} className="absolute inset-0 z-10 pointer-events-none h-full">
+    <div className="absolute inset-0 z-10 pointer-events-none h-full">
       <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
-
-        {/* Section 1 */}
+        
+        {/* Section 1 - Fixed at center */}
         <motion.div
-           style={{ opacity: opacity1, y: y1 }}
+           style={{ 
+             opacity: opacity1, 
+             y: y1,
+             display: useTransform(scrollYProgress, p => p > 0.15 ? 'none' : 'flex') 
+           }}
            className="absolute text-center flex flex-col items-center gap-4 px-6"
          >
            <div className="flex flex-col items-center gap-2 sm:gap-4">
@@ -41,9 +46,13 @@ export default function Overlay() {
            </div>
          </motion.div>
 
-        {/* Section 2 */}
+        {/* Section 2 - Absolute Left */}
         <motion.div
-          style={{ opacity: opacity2, y: y2 }}
+          style={{ 
+            opacity: opacity2, 
+            y: y2,
+            display: useTransform(scrollYProgress, p => (p < 0.2 || p > 0.6) ? 'none' : 'block')
+          }}
           className="absolute left-6 sm:left-12 md:left-24 max-w-[85vw] md:max-w-lg"
         >
           <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight drop-shadow-xl">
@@ -51,9 +60,13 @@ export default function Overlay() {
           </h2>
         </motion.div>
 
-        {/* Section 3 */}
+        {/* Section 3 - Absolute Right */}
         <motion.div
-          style={{ opacity: opacity3, y: y3 }}
+          style={{ 
+            opacity: opacity3, 
+            y: y3,
+            display: useTransform(scrollYProgress, p => p < 0.65 ? 'none' : 'block')
+          }}
           className="absolute right-6 sm:right-12 md:right-24 max-w-[85vw] md:max-w-lg text-right"
         >
           <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight drop-shadow-xl">
