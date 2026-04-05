@@ -60,20 +60,43 @@ export default function ContactForm() {
               Have a high-impact project in mind? Reach out and let's turn your vision into a digital reality.
             </p>
 
-            <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=20006shivam@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-5 group cursor-pointer w-fit"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-500 group-hover:bg-purple-600 group-hover:border-purple-500 group-hover:-translate-y-1 shadow-xl">
-                <Mail className="w-6 h-6 text-gray-400 group-hover:text-white transition-colors" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-[10px] font-black tracking-[0.2em] text-gray-500 uppercase mb-1">Direct Email</span>
-                <span className="text-white text-lg font-semibold tracking-tight group-hover:text-[#a0d2eb] transition-colors">20006shivam@gmail.com</span>
-              </div>
-            </a>
+            <div className="flex flex-col gap-6">
+              {/* Email */}
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=20006shivam@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-5 group cursor-pointer w-fit"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-500 group-hover:bg-purple-600 group-hover:border-purple-500 group-hover:-translate-y-1 shadow-xl">
+                  <Mail className="w-6 h-6 text-gray-400 group-hover:text-white transition-colors" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-black tracking-[0.2em] text-gray-500 uppercase mb-1 whitespace-nowrap">Direct Email</span>
+                  <span className="text-white text-lg font-semibold tracking-tight group-hover:text-[#a0d2eb] transition-colors">20006shivam@gmail.com</span>
+                </div>
+              </a>
+
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/_s_h_i_v_a_m_06_/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-5 group cursor-pointer w-fit"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-500 group-hover:bg-gradient-to-tr group-hover:from-[#f09433] group-hover:via-[#e6683c] group-hover:to-[#bc1888] group-hover:border-pink-500 group-hover:-translate-y-1 shadow-xl">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-gray-400 group-hover:text-white transition-colors">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                  </svg>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-black tracking-[0.2em] text-gray-500 uppercase mb-1 whitespace-nowrap">Instagram</span>
+                  <span className="text-white text-lg font-semibold tracking-tight group-hover:text-[#f09433] transition-colors">@_s_h_i_v_a_m_06_</span>
+                </div>
+              </a>
+            </div>
           </div>
         </motion.div>
 

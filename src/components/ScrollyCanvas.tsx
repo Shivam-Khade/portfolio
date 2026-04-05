@@ -115,7 +115,7 @@ export default function ScrollyCanvas() {
   }, [images, scrollYProgress]);
 
   return (
-    <div ref={wrapperRef} className="absolute inset-0 z-0 h-full w-full pointer-events-none">
+    <div ref={wrapperRef} className="absolute inset-0 z-0 h-full w-full pointer-events-none content-reveal">
       <div className="sticky top-0 h-screen w-full">
         <canvas
           ref={canvasRef}

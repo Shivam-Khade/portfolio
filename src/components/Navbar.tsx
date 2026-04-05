@@ -9,7 +9,7 @@ export default function Navbar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-6 left-1/2 -translate-x-1/2 z-50"
+      className="fixed top-6 left-1/2 -translate-x-1/2 z-50 content-reveal"
     >
       <nav className="flex items-center gap-1 p-1.5 rounded-full bg-[#121212]/50 backdrop-blur-md border border-white/10 shadow-2xl">
         <Link 

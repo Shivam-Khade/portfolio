@@ -25,16 +25,18 @@ export default function Overlay() {
 
         {/* Section 1 */}
         <motion.div
-          style={{ opacity: opacity1, y: y1 }}
-          className="absolute text-center flex flex-col items-center gap-4"
-        >
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white drop-shadow-xl">
-            Shivam Khade.
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 font-medium tracking-wide">
-            Creative Developer.
-          </p>
-        </motion.div>
+           style={{ opacity: opacity1, y: y1 }}
+           className="absolute text-center flex flex-col items-center gap-4"
+         >
+           <div className="hero-reveal flex flex-col items-center gap-4">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white drop-shadow-xl">
+              Shivam Khade.
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-300 font-medium tracking-wide">
+              Creative Developer.
+            </p>
+           </div>
+         </motion.div>
 
         {/* Section 2 */}
         <motion.div
