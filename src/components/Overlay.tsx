@@ -4,23 +4,26 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function Overlay() {
-  // It's helpful to track the scroll on the same container, or document scroll if this is full page
-  const { scrollYProgress } = useScroll();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
 
-  // Section 1: 0% to 8% fades out
-  const opacity1 = useTransform(scrollYProgress, [0, 0.04, 0.08], [1, 1, 0]);
-  const y1 = useTransform(scrollYProgress, [0, 0.08], ["0%", "-30%"]);
+  // Section 1: 0% to 10% (Immediate start, gone early)
+  const opacity1 = useTransform(scrollYProgress, [0, 0.05, 0.1], [1, 1, 0]);
+  const y1 = useTransform(scrollYProgress, [0, 0.1], ["0%", "-20%"]);
 
-  // Section 2: fades in at 12%, peaks at 25%, fades out at 38%
-  const opacity2 = useTransform(scrollYProgress, [0.12, 0.25, 0.38], [0, 1, 0]);
-  const y2 = useTransform(scrollYProgress, [0.12, 0.38], ["30%", "-30%"]);
+  // Section 2: 25% to 55% (Centered at 40%)
+  const opacity2 = useTransform(scrollYProgress, [0.25, 0.4, 0.55], [0, 1, 0]);
+  const y2 = useTransform(scrollYProgress, [0.25, 0.55], ["20%", "-20%"]);
 
-  // Section 3: fades in at 42%, peaks at 55%, fades out at 68%
-  const opacity3 = useTransform(scrollYProgress, [0.42, 0.55, 0.68], [0, 1, 0]);
-  const y3 = useTransform(scrollYProgress, [0.42, 0.68], ["30%", "-30%"]);
+  // Section 3: 70% to 95% (Final section)
+  const opacity3 = useTransform(scrollYProgress, [0.7, 0.82, 0.95], [0, 1, 0]);
+  const y3 = useTransform(scrollYProgress, [0.7, 0.95], ["20%", "-20%"]);
 
   return (
-    <div className="absolute inset-0 z-10 pointer-events-none h-full">
+    <div ref={containerRef} className="absolute inset-0 z-10 pointer-events-none h-full">
       <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
 
         {/* Section 1 */}
@@ -28,7 +31,7 @@ export default function Overlay() {
            style={{ opacity: opacity1, y: y1 }}
            className="absolute text-center flex flex-col items-center gap-4 px-6"
          >
-           <div className="hero-reveal flex flex-col items-center gap-2 sm:gap-4">
+           <div className="flex flex-col items-center gap-2 sm:gap-4">
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-white drop-shadow-xl whitespace-nowrap">
               Shivam Khade.
             </h1>
