@@ -7,17 +7,17 @@ export default function Overlay() {
   // It's helpful to track the scroll on the same container, or document scroll if this is full page
   const { scrollYProgress } = useScroll();
 
-  // Section 1: 0% to 15% fades out
-  const opacity1 = useTransform(scrollYProgress, [0, 0.08, 0.14], [1, 1, 0]);
-  const y1 = useTransform(scrollYProgress, [0, 0.14], ["0%", "-50%"]);
+  // Section 1: 0% to 8% fades out
+  const opacity1 = useTransform(scrollYProgress, [0, 0.04, 0.08], [1, 1, 0]);
+  const y1 = useTransform(scrollYProgress, [0, 0.08], ["0%", "-30%"]);
 
-  // Section 2: fades in at 20%, peaks at 30%, fades out at 40%
-  const opacity2 = useTransform(scrollYProgress, [0.18, 0.28, 0.38], [0, 1, 0]);
-  const y2 = useTransform(scrollYProgress, [0.18, 0.38], ["50%", "-50%"]);
+  // Section 2: fades in at 12%, peaks at 25%, fades out at 38%
+  const opacity2 = useTransform(scrollYProgress, [0.12, 0.25, 0.38], [0, 1, 0]);
+  const y2 = useTransform(scrollYProgress, [0.12, 0.38], ["30%", "-30%"]);
 
-  // Section 3: fades in at 50%, peaks at 60%, fades out at 70%
-  const opacity3 = useTransform(scrollYProgress, [0.4, 0.52, 0.65], [0, 1, 0]);
-  const y3 = useTransform(scrollYProgress, [0.4, 0.65], ["50%", "-50%"]);
+  // Section 3: fades in at 42%, peaks at 55%, fades out at 68%
+  const opacity3 = useTransform(scrollYProgress, [0.42, 0.55, 0.68], [0, 1, 0]);
+  const y3 = useTransform(scrollYProgress, [0.42, 0.68], ["30%", "-30%"]);
 
   return (
     <div className="absolute inset-0 z-10 pointer-events-none h-full">
